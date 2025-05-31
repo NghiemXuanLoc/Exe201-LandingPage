@@ -1,0 +1,22 @@
+HTTrack3.49-2+htsswf+htsjava launched on Sat, 31 May 2025 23:50:31 at https://saptarang.org/envato/traveler/01/index2.html +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://saptarang.org/envato/traveler/01/index2.html -O1 "D:\xyz" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+23:51:49	Error: 	"Not Found" (404) at link https://saptarang.org/envato/traveler/01/plus-icon.png (from https://saptarang.org/envato/traveler/01/index2.html)
+23:51:50	Error: 	"Not Found" (404) at link https://saptarang.org/envato/traveler/01/fonts/glyphicons-halflings-regular.eot (from https://saptarang.org/envato/traveler/01/css/bootstrap.min.css)
+23:51:50	Error: 	"Not Found" (404) at link https://saptarang.org/envato/traveler/01/fonts/glyphicons-halflings-regular.eot? (from https://saptarang.org/envato/traveler/01/css/bootstrap.min.css)
+23:51:50	Error: 	"Not Found" (404) at link https://saptarang.org/envato/traveler/01/fonts/glyphicons-halflings-regular.woff2 (from https://saptarang.org/envato/traveler/01/css/bootstrap.min.css)
+23:51:50	Error: 	"Not Found" (404) at link https://saptarang.org/envato/traveler/01/fonts/glyphicons-halflings-regular.woff (from https://saptarang.org/envato/traveler/01/css/bootstrap.min.css)
+23:51:50	Error: 	"Not Found" (404) at link https://saptarang.org/envato/traveler/01/fonts/glyphicons-halflings-regular.ttf (from https://saptarang.org/envato/traveler/01/css/bootstrap.min.css)
+23:51:50	Error: 	"Not Found" (404) at link https://saptarang.org/envato/traveler/01/fonts/glyphicons-halflings-regular.svg (from https://saptarang.org/envato/traveler/01/css/bootstrap.min.css)
+23:51:50	Error: 	"Not Found" (404) at link https://saptarang.org/envato/traveler/01/fonts/font-awesome/fonts/fontawesome-webfont.ttf?v=4.6.1 (from https://saptarang.org/envato/traveler/01/fonts/font-awesome/css/font-awesome.min.css)
+23:51:50	Error: 	"Not Found" (404) at link https://saptarang.org/envato/traveler/01/Popover requires tooltip.js (from https://saptarang.org/envato/traveler/01/js/bootstrap.min.js)
+23:51:50	Error: 	"Not Found" (404) at link https://saptarang.org/envato/traveler/01/youtu.be/ (from https://saptarang.org/envato/traveler/01/js/jquery.prettyPhoto.js)
+23:51:50	Error: 	"Not Found" (404) at link https://saptarang.org/envato/traveler/01/img.svg (from https://saptarang.org/envato/traveler/01/js/master.js)
+
+HTTrack Website Copier/3.49-2 mirror complete in 1 minutes 19 seconds : 120 links scanned, 108 files written (3967641 bytes overall) [3166749 bytes received at 40085 bytes/sec], 1798689 bytes transferred using HTTP compression in 42 files, ratio 49%, 40.0 requests per connection
+(11 errors, 0 warnings, 0 messages)
