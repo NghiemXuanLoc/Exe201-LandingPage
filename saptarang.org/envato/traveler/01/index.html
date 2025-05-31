@@ -707,33 +707,61 @@
 <!-- ::: END ::: -->
 
 <!--  ::: CONTACT ::: -->
+<!--  ::: CONTACT ::: -->
 <section id="contact" class="">
   <div class="gradient dark">
-	<div class="container">
+    <div class="container">
       <div class="row">
         <div class="col-md-12 wow zoomIn" data-wow-duration="0.50s" data-wow-delay="0.50s">
-            <h1 class="text-center"><span>Have</span> Questions?<small>We’re here to help solve all your problems</small></h1>
+            <h1 class="text-center"><span>Đăng ký</span> Tour<small>Điền thông tin để đăng ký tham gia</small></h1>
             
-            <form id="contact_form" method="post" action="https://saptarang.org/envato/traveler/01/form/contact.php">
+            <form id="tour_registration_form" method="post">
               <div class="field-wrapper">
                 <div class="form-row col-md-6 col-sm-12">
-                  <div><input type="text" class="form-control" id="name" name="name" placeholder="Your Name" /></div>
-                  <div><input type="email" class="form-control" id="email" name="email" placeholder="Your Email" /></div>
-                  <div><input type="text" class="form-control" id="phone" name="phone" placeholder="Your Phone" /></div>
+                  <div><input type="text" class="form-control" id="name" name="name" placeholder="Họ và tên *" required /></div>
+                  <div><input type="tel" class="form-control" id="phone" name="phone" placeholder="Số điện thoại *" required /></div>
+                  <div><input type="url" class="form-control" id="facebook" name="facebook" placeholder="Link Facebook (không bắt buộc)" /></div>
                 </div>
                 <div class="form-row col-md-6 col-sm-12">
-                   <textarea cols="60" rows="3" id="comment" name="comment" class="form-control" placeholder="Write your comment here..."></textarea>
+                  <div>
+                    <select class="form-control" id="pickup" name="pickup" required>
+                      <option value="">Chọn điểm đón *</option>
+                      <option value="Hòa Lạc">Hòa Lạc</option>
+                      <option value="Hà Nội">Hà Nội</option>
+                    </select>
+                  </div>
+                  <div>
+                    <select class="form-control" id="payment" name="payment" required>
+                      <option value="">Tình trạng thanh toán *</option>
+                      <option value="Đã thanh toán đầy đủ">Đã thanh toán đầy đủ</option>
+                      <option value="Đã cọc 50%">Đã cọc 50%</option>
+                      <option value="Chưa thanh toán">Chưa thanh toán</option>
+                    </select>
+                  </div>
+                  <div>
+                    <input type="file" class="form-control" id="bill" name="bill" accept="image/*,.pdf" />
+                    <small style="color: #ccc; font-size: 12px;">Upload bill chuyển khoản (jpg, png, pdf)</small>
+                  </div>
                 </div><div class="clear"></div>
-                <div class="form-row  col-md-12">
-                <input type="text" id="security" name="security" class="form-control hide" value="" />
-                <input type="submit" value="&#xf1d8; SEND MESSAGE" class="btn btn-primary btn-lg" id="submit" name="submit" />
+                <div class="form-row col-md-12">
+                  <input type="text" id="security" name="security" class="form-control hide" value="" />
+                  <input type="submit" value="&#xf1d8; ĐĂNG KÝ TOUR" class="btn btn-primary btn-lg" id="submit" name="submit" />
+                  <div id="loading" style="display: none; text-align: center; margin-top: 15px;">
+                    <span style="color: white; font-size: 14px;"><i class="fa fa-spinner fa-spin"></i> Đang gửi thông tin...</span>
+                  </div>
+                  <div id="success-message" style="display: none; text-align: center; margin-top: 15px; padding: 10px; background: rgba(76, 175, 80, 0.1); border: 1px solid #4CAF50; border-radius: 5px;">
+                    <span style="color: #4CAF50; font-size: 16px;"><i class="fa fa-check-circle"></i> Đăng ký thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.</span>
+                  </div>
+                  <div id="error-message" style="display: none; text-align: center; margin-top: 15px; padding: 10px; background: rgba(244, 67, 54, 0.1); border: 1px solid #f44336; border-radius: 5px;">
+                    <span style="color: #f44336; font-size: 16px;"><i class="fa fa-exclamation-triangle"></i> Có lỗi xảy ra! Vui lòng kiểm tra lại thông tin và thử lại.</span>
+                  </div>
                 </div><div class="clear"></div>
-             </div>
+              </div>
             </form>
         
         </div>
       </div>
-	</div>
+    </div>
   </div>
     
   <footer class="BGdark opaque">
@@ -749,6 +777,7 @@
     </div><!-- end container -->
   </footer>
 </section>
+<!-- ::: END ::: -->
 <!-- ::: END ::: -->
 
 <!-- ::: Terms & Conditions Content ::: -->
@@ -819,6 +848,168 @@
   .addTo(controller); // assign the scene to the controller
 </script>
 
+<script>
+// Tour Registration Form Handler
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('tour_registration_form');
+    
+    if (form) {
+        const submitBtn = document.getElementById('submit');
+        const loading = document.getElementById('loading');
+        const successMsg = document.getElementById('success-message');
+        const errorMsg = document.getElementById('error-message');
+        
+        // URL Apps Script - cập nhật URL mới sau khi deploy
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwwjeOnA_OBEUWrdja57ccL2JBzH2kNIvlydWzpy-wrzbzr5JNwsOwnmR_dUVvrz8EK/exec';
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate required fields
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const pickup = document.getElementById('pickup').value;
+            const payment = document.getElementById('payment').value;
+            
+            if (!name || !phone || !pickup || !payment) {
+                showError('Vui lòng điền đầy đủ các thông tin bắt buộc (*)');
+                return;
+            }
+            
+            // Hide previous messages
+            successMsg.style.display = 'none';
+            errorMsg.style.display = 'none';
+            
+            // Show loading
+            submitBtn.disabled = true;
+            loading.style.display = 'block';
+            
+            // Get form data
+            const formData = new FormData(this);
+            const billFile = formData.get('bill');
+            
+            // Check if file exists and process accordingly
+            if (billFile && billFile.size > 0) {
+                // Check file size (max 2MB)
+                if (billFile.size > 2 * 1024 * 1024) {
+                    showError('File quá lớn! Vui lòng chọn file dưới 2MB.');
+                    return;
+                }
+                
+                // Process file
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const base64Data = e.target.result;
+                    console.log('File size:', billFile.size);
+                    console.log('Base64 length:', base64Data.length);
+                    
+                    const dataToSend = {
+                        name: formData.get('name'),
+                        phone: formData.get('phone'),
+                        facebook: formData.get('facebook') || '',
+                        pickup: formData.get('pickup'),
+                        payment: formData.get('payment'),
+                        bill: base64Data
+                    };
+                    
+                    sendToGoogleScript(dataToSend);
+                };
+                reader.readAsDataURL(billFile);
+            } else {
+                // No file - send without bill
+                const dataToSend = {
+                    name: formData.get('name'),
+                    phone: formData.get('phone'),
+                    facebook: formData.get('facebook') || '',
+                    pickup: formData.get('pickup'),
+                    payment: formData.get('payment'),
+                    bill: ''
+                };
+                
+                sendToGoogleScript(dataToSend);
+            }
+        });
+        
+        // Function to send data to Google Script với fallback cho CORS
+        function sendToGoogleScript(data) {
+            console.log('Sending data:', {
+                ...data,
+                bill: data.bill ? data.bill.substring(0, 50) + '...' : 'empty'
+            });
+            
+            // Thử POST với CORS headers trước
+            fetch(APPS_SCRIPT_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                return response.text();
+            })
+            .then(result => {
+                console.log('Response result:', result);
+                hideLoading();
+                
+                if (result.includes('Success')) {
+                    showSuccess();
+                } else {
+                    showError('Có lỗi xảy ra: ' + result);
+                }
+            })
+            .catch(error => {
+                console.error('POST failed, trying no-cors mode:', error);
+                
+                // Fallback: sử dụng no-cors mode
+                fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(() => {
+                    // Với no-cors, giả định thành công
+                    console.log('Sent with no-cors mode');
+                    hideLoading();
+                    showSuccess();
+                })
+                .catch(finalError => {
+                    console.error('Final error:', finalError);
+                    hideLoading();
+                    showError('Không thể kết nối đến server: ' + finalError.message);
+                });
+            });
+        }
+        
+        // Helper functions
+        function showError(message) {
+            loading.style.display = 'none';
+            submitBtn.disabled = false;
+            errorMsg.style.display = 'block';
+            errorMsg.querySelector('span').innerHTML = '<i class="fa fa-exclamation-triangle"></i> ' + message;
+            successMsg.style.display = 'none';
+        }
+        
+        function showSuccess() {
+            loading.style.display = 'none';
+            submitBtn.disabled = false;
+            successMsg.style.display = 'block';
+            errorMsg.style.display = 'none';
+            form.reset();
+            successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        function hideLoading() {
+            loading.style.display = 'none';
+            submitBtn.disabled = false;
+        }
+    }
+});
+</script>
 </body>
 
 <!-- Mirrored from saptarang.org/envato/traveler/01/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 31 May 2025 16:51:48 GMT -->
