@@ -1,0 +1,151 @@
+/* Custom Color Scheme - Beige & Brown Theme */
+
+:root {
+  --primary-color: #b87e5f; /* Brown accent color for buttons and highlights */
+  --secondary-color: #e6d5c7; /* Light beige for secondary elements */
+  --background-color: #f5ebe0; /* Main background color - light beige */
+  --dark-color: #4a3728; /* Dark brown for text */
+  --light-color: #ffffff; /* White for contrast */
+}
+
+/* Background Colors */
+.BGprime {
+  background-color: var(--primary-color) !important;
+}
+
+.BGlight {
+  background-color: var(--background-color) !important;
+}
+
+.BGdark {
+  background-color: var(--dark-color) !important;
+}
+
+/* Text Colors */
+.prime {
+  color: var(--primary-color) !important;
+}
+
+body {
+  color: var(--dark-color);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--dark-color) !important;
+  border-color: var(--dark-color) !important;
+}
+
+/* Navigation */
+/* .navbar-default {
+    background-color: var(--background-color);
+  } */
+
+.navbar-default .navbar-nav > li > a {
+  color: var(--dark-color);
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  color: var(--primary-color);
+}
+
+/* Headers */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--dark-color);
+}
+
+h1 span {
+  color: var(--primary-color);
+}
+
+/* Links */
+a {
+  color: var(--primary-color);
+}
+
+a:hover {
+  color: var(--dark-color);
+}
+
+/* Form Elements */
+.form-control {
+  border-color: var(--secondary-color);
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+}
+
+/* Custom Elements */
+.date {
+  background-color: var(--primary-color) !important;
+}
+
+.delight {
+  background-color: var(--secondary-color);
+}
+
+.overlay {
+  background-color: rgba(
+    184,
+    126,
+    95,
+    0.8
+  ); /* Semi-transparent primary color */
+}
+
+/* Footer */
+footer {
+  background-color: var(--dark-color);
+  color: var(--light-color);
+}
+
+/* Testimonials */
+#testimonial .item {
+  background-color: var(--background-color);
+}
+
+/* Tour Items */
+.item .name {
+  background-color: var(--primary-color);
+}
+
+/* Additional Info Boxes */
+.additional-info {
+  background-color: var(--secondary-color);
+}
+
+/* Subscribe Form */
+.subscribe .BGlight {
+  background-color: var(--background-color) !important;
+}
+
+/* Carousel Controls */
+/* .carousel-control {
+  background: var(--primary-color) !important;
+} */
+
+/* Modal */
+.modal-content {
+  background-color: var(--background-color);
+}
+
+/* Success Messages */
+.success {
+  color: #4caf50;
+}
+
+/* Error Messages */
+.error {
+  color: #f44336;
+}
