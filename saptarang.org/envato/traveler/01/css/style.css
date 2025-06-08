@@ -948,7 +948,7 @@ header .logo a img {
     border-radius: 50%;
     -webkit-border-radius: 50%;
     text-align: center;
-    color: #fff;
+    color: #000;
     margin-top: -3.65em;
     -webkit-box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);
     box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);
@@ -1100,6 +1100,8 @@ header .logo a img {
     margin-left: -2.15em;
     border-radius: 10em;
     -webkit-border-radius: 10em;
+    background: #e0cda9;
+    z-index: 2;
 }
 .tube .start {
     position: absolute;
@@ -1126,7 +1128,7 @@ header .logo a img {
     height: 75px;
     position: absolute;
     left: 50%;
-    z-index: 99;
+    z-index: 120;
     margin-left: -18px;
 }
 #car.trigger {
@@ -2836,4 +2838,19 @@ ul.social li a:hover {
     .info-box .container > div.counter {
         margin: 0;
     }
+}
+.day .dayNum.abs {
+    background: #e0cda9; /* màu con đường nhạt */
+    color: #8d5524;
+    border: 0.65em solid #fff;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 1.2em;
+    box-shadow: 0 2px 8px rgba(194, 151, 114, 0.63);
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+.day .dayNum.abs.active {
+    background: #ffd54f; /* vàng sáng nổi bật khi ô tô gần */
+    color: black;
+    box-shadow: 0 0 20px #ffd54f, 0 2px 8px rgba(141, 85, 36, 0.16);
 }
