@@ -380,7 +380,6 @@ hr {
     display: none;
 }
 #slides .scrollable {
-    *zoom: 1;
     position: relative;
     top: 0;
     left: 0;
@@ -2876,4 +2875,53 @@ ul.social li a:hover {
     width: 362px;
     height: 482px;
     margin: 0 auto;
+}
+
+ul.special li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+ul.special li i.fa-check-circle {
+    font-size: 1.1em;
+    line-height: 1;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+@media only screen and (max-width: 767px) {
+    #galleryCarousel .item img,
+    #upcoming .item img {
+        width: 100% !important;
+        aspect-ratio: 1 / 1;
+        height: auto !important;
+        object-fit: cover;
+        max-width: 100%;
+        border-radius: 12px;
+    }
+    ul.special li {
+        gap: 4px;
+    }
+    ul.special li i.fa-check-circle {
+        margin-right: 2px;
+        margin-left: -38px;
+        vertical-align: middle;
+        position: relative;
+        top: -2px;
+    }
+}
+
+.only-mobile {
+    display: none !important;
+}
+.only-desktop {
+    display: block !important;
+}
+@media only screen and (max-width: 767px) {
+    .only-mobile {
+        display: block !important;
+    }
+    .only-desktop {
+        display: none !important;
+    }
 }
