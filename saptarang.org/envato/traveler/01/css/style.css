@@ -2474,6 +2474,20 @@ ul.social li a:hover {
     footer .text-right {
         margin-top: 1.5em;
     }
+    .tube {
+        left: 0 !important;
+        margin-left: 0 !important;
+        z-index: 10 !important;
+    }
+    #car {
+        left: 0 !important;
+        margin-left: 0 !important;
+        z-index: 11 !important;
+    }
+    .line {
+        left: 1.35em;
+        z-index: 10 !important;
+    }
 }
 @media only screen and (min-width: 768px) {
     .subscribe form .btn {
@@ -2764,8 +2778,9 @@ ul.social li a:hover {
     }
     .day .right.placeInfo,
     .day .left.placeInfo {
-        margin-top: 23em;
+        margin-top: 21em;
         padding-top: 7em;
+        height: 37em;
     }
 }
 @media only screen and (min-width: 320px) and (max-width: 369px) {
@@ -2853,4 +2868,9 @@ ul.social li a:hover {
     background: #ffd54f; /* vàng sáng nổi bật khi ô tô gần */
     color: black;
     box-shadow: 0 0 20px #ffd54f, 0 2px 8px rgba(141, 85, 36, 0.16);
+}
+#upcoming .item img {
+    width: 362px;
+    height: 482px;
+    margin: 0 auto;
 }
