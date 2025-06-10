@@ -2017,28 +2017,25 @@
         <script src="js/master.js"></script>
         <script>
             // Kiểm tra ScrollMagic có load được không
-            document.addEventListener("DOMContentLoaded", function () {
-                if (typeof ScrollMagic === "undefined") {
-                    console.error(
-                        "ScrollMagic failed to load from CDN, loading backup..."
-                    );
-
+            document.addEventListener('DOMContentLoaded', function() {
+                if (typeof ScrollMagic === 'undefined') {
+                    console.error('ScrollMagic failed to load from CDN, loading backup...');
+                    
                     // Load backup CDN
-                    var script = document.createElement("script");
-                    script.src =
-                        "https://cdn.jsdelivr.net/npm/scrollmagic@2.0.8/scrollmagic/minified/ScrollMagic.min.js";
-                    script.onload = function () {
-                        console.log("Backup ScrollMagic loaded successfully");
+                    var script = document.createElement('script');
+                    script.src = 'https://cdn.jsdelivr.net/npm/scrollmagic@2.0.8/scrollmagic/minified/ScrollMagic.min.js';
+                    script.onload = function() {
+                        console.log('Backup ScrollMagic loaded successfully');
                         initCarAnimation();
                     };
-                    script.onerror = function () {
-                        console.error("Backup ScrollMagic also failed");
+                    script.onerror = function() {
+                        console.error('Backup ScrollMagic also failed');
                         // Implement CSS-only fallback
                         implementCSSFallback();
                     };
                     document.head.appendChild(script);
                 } else {
-                    console.log("ScrollMagic loaded successfully from CDN");
+                    console.log('ScrollMagic loaded successfully from CDN');
                     initCarAnimation();
                 }
             });
@@ -2060,8 +2057,7 @@
                         offset: {
                             top: winHieght - menuHT,
                             bottom: function () {
-                                return (this.bottom =
-                                    $(".footer").outerHeight(true));
+                                return (this.bottom = $(".footer").outerHeight(true));
                             },
                         },
                     });
@@ -2070,27 +2066,28 @@
                     var controller = new ScrollMagic.Controller();
                     var tube = $(".tube").outerHeight();
                     var greyHgt = tube - 150;
-
+                    
                     // create a scene
                     var scene = new ScrollMagic.Scene({
                         triggerElement: "#car",
                         duration: greyHgt,
                     })
-                        .setPin("#car")
-                        .addTo(controller);
-
-                    console.log("Car animation initialized successfully!");
+                    .setPin("#car")
+                    .addTo(controller);
+                    
+                    console.log('Car animation initialized successfully!');
+                    
                 } catch (error) {
-                    console.error("Error initializing car animation:", error);
+                    console.error('Error initializing car animation:', error);
                     implementCSSFallback();
                 }
             }
-
+            
             function implementCSSFallback() {
-                console.log("Implementing CSS-only car animation fallback");
-
+                console.log('Implementing CSS-only car animation fallback');
+                
                 // Add CSS fallback styles
-                var style = document.createElement("style");
+                var style = document.createElement('style');
                 style.textContent = `
                     #car {
                         position: sticky !important;
@@ -2125,7 +2122,7 @@
                     }
                 `;
                 document.head.appendChild(style);
-
+                
                 // Initialize other components without ScrollMagic
                 $("#slides").superslides({
                     animation: "fade",
