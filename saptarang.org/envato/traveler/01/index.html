@@ -1687,9 +1687,12 @@
                             data-wow-delay="0.50s"
                         >
                             <h1 class="text-center">
-                                <span>Đăng ký</span> Tour<small
-                                    >Điền thông tin để đăng ký tham gia</small
-                                >
+                                <span>Đăng ký</span> Tour
+                                <br/>
+                                <button class="qr-button" onclick="openQRModal()">
+                                    <i class="fa fa-qrcode"></i> Xem QR Thanh toán
+                                </button>
+                                <small>Điền thông tin để đăng ký tham gia</small>
                             </h1>
 
                             <form id="tour_registration_form" method="post">
@@ -2382,6 +2385,45 @@
                         },
                         800
                     );
+                }
+            });
+        </script>
+
+        <!-- QR Code Modal -->
+        <div id="qrModal" class="qr-modal">
+            <div class="qr-modal-content">
+                <span class="qr-close" onclick="closeQRModal()">&times;</span>
+                <h3>Thông tin thanh toán</h3>
+                <img src="images/qr-bank/qr-bank.png" alt="QR Code thanh toán">
+                <p>Quét mã QR để thanh toán hoặc chuyển khoản theo thông tin trên</p>
+                <p><strong>Số tiền:</strong> dựa theo tour muốn đăng kí</p>
+            </div>
+        </div>
+
+        <script>
+            // QR Modal functions
+            function openQRModal() {
+                document.getElementById('qrModal').style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Prevent body scroll
+            }
+
+            function closeQRModal() {
+                document.getElementById('qrModal').style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restore body scroll
+            }
+
+            // Close modal when clicking outside
+            window.onclick = function(event) {
+                const modal = document.getElementById('qrModal');
+                if (event.target == modal) {
+                    closeQRModal();
+                }
+            }
+
+            // Close modal with ESC key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    closeQRModal();
                 }
             });
         </script>
